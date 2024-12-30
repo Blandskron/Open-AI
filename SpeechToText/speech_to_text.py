@@ -1,10 +1,16 @@
 import os
 from openai import OpenAI
+from dotenv import load_dotenv
 
-# Configuración de la clave API
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv()
+
 def obtener_clave_api():
-    """Función para obtener la clave API."""
-    return "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"
+    """Función para obtener la clave API desde las variables de entorno."""
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("La clave API no está configurada. Asegúrate de definir OPENAI_API_KEY en tu archivo .env.")
+    return api_key
 
 def transcribe_audio(file_path):
     """Transcribe un archivo de audio usando la API Whisper."""

@@ -1,9 +1,10 @@
 import time
 from openai import OpenAI
 import random
+from dotenv import load_dotenv
 
-# Definir la clave API directamente
-API_KEY = "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"
+load_dotenv()
+API_KEY = os.getenv("OPENAI_API_KEY")
 
 def initialize_client():
     """Inicializa el cliente de OpenAI utilizando la API Key."""
